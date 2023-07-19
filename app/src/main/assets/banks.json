@@ -1,0 +1,618 @@
+[
+  {
+    "name": "State Bank of India",
+    "icon": "ic_bank_sbi",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09223766666"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004253800"
+      }
+    ]
+  },
+  {
+    "name": "Bank of Baroda",
+    "icon": "ic_bank_baroda",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "8468001111"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18001024455"
+      }
+    ]
+  },
+  {
+    "name": "IDBI Bank",
+    "icon": "ic_bank_idbi",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18008431122"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18002001947"
+      }
+    ]
+  },
+  {
+    "name": "Central Bank of India",
+    "icon": "ic_bank_cbi",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09222250000"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18002001911"
+      }
+    ]
+  },
+  {
+    "name": "HDFC Bank",
+    "icon": "ic_bank_hdfc",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18002703333"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004254332"
+      }
+    ]
+  },
+  {
+    "name": "Citi Bank",
+    "icon": "ic_bank_citi",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18004252484"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "1800226747"
+      }
+    ]
+  },
+  {
+    "name": "Axis Bank",
+    "icon": "ic_bank_axis",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18004195959"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18002095577"
+      }
+    ]
+  },
+  {
+    "name": "Kotak Mahindra Bank",
+    "icon": "ic_bank_kotak_mahindra",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18002740110"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18602662666"
+      }
+    ]
+  },
+  {
+    "name": "Yes Bank",
+    "icon": "ic_bank_yes",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09840909000"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18002000"
+      }
+    ]
+  },
+  {
+    "name": "Punjab National Bank",
+    "icon": "ic_bank_punjab",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18001802222"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18001802222"
+      }
+    ]
+  },
+  {
+    "name": "Dena Bank",
+    "icon": "ic_bank_dena",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09289356677"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18002336427"
+      }
+    ]
+  },
+  {
+    "name": "Canara Bank",
+    "icon": "ic_bank_canara",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09015483483"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004250018"
+      }
+    ]
+  },
+  {
+    "name": "Bank of India",
+    "icon": "ic_bank_india",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09015135135"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "1800220229"
+      }
+    ]
+  },
+  {
+    "name": "Corporation Bank",
+    "icon": "ic_bank_corporation",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09268892688"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004253555"
+      }
+    ]
+  },
+  {
+    "name": "Union Bank of India",
+    "icon": "ic_bank_union",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09223008586"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "1800222244"
+      }
+    ]
+  },
+  {
+    "name": "UCO Bank",
+    "icon": "ic_bank_uco",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09278792787"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18001030123"
+      }
+    ]
+  },
+  {
+    "name": "Vijaya Bank",
+    "icon": "ic_bank_vijaya",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18002665555"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004255885"
+      }
+    ]
+  },
+  {
+    "name": "South Indian Bank",
+    "icon": "ic_bank_south_indian",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09223008488"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18008431800"
+      }
+    ]
+  },
+  {
+    "name": "American Express",
+    "icon": "ic_bank_american_express",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "1800446630"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "1800446630"
+      }
+    ]
+  },
+  {
+    "name": "HSBC Bank",
+    "icon": "ic_bank_hsbc",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18001034722"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18001034722"
+      }
+    ]
+  },
+  {
+    "name": "Federal Bank",
+    "icon": "ic_bank_federal",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "8431900900"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004251199"
+      }
+    ]
+  },
+  {
+    "name": "Indian Overseas Bank",
+    "icon": "ic_bank_indian_overseas",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18004254445"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004254445"
+      }
+    ]
+  },
+  {
+    "name": "ING Vysya Bank",
+    "icon": "ic_bank_ing_vysya",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18004259900"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004209900"
+      }
+    ]
+  },
+  {
+    "name": "Karur Vysya Bank",
+    "icon": "ic_bank_karur_kysya",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09266292666"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18602001916"
+      }
+    ]
+  },
+  {
+    "name": "ABN AMRO",
+    "icon": "ic_bank_abn_amro",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "1800112224"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "1800112224"
+      }
+    ]
+  },
+  {
+    "name": "Allahabad Bank",
+    "icon": "ic_bank_allahabad",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09224150150"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "1800226061"
+      }
+    ]
+  },
+  {
+    "name": "Andhra Bank",
+    "icon": "ic_bank_andhra",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09223011300"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004251515"
+      }
+    ]
+  },
+  {
+    "name": "ANZ Bank",
+    "icon": "ic_bank_anz",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18002000269"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18002000269"
+      }
+    ]
+  },
+  {
+    "name": "Bank of Maharashtra",
+    "icon": "ic_bank_maharashtra",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09222281818"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18002334526"
+      }
+    ]
+  },
+  {
+    "name": "Barclays Bank",
+    "icon": "ic_bank_barclays",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18002336565"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "00442476842100"
+      }
+    ]
+  },
+  {
+    "name": "Indian Bank",
+    "icon": "ic_bank_indian",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09289592895"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "180042500000"
+      }
+    ]
+  },
+  {
+    "name": "Bharatiya Mahila Bank",
+    "icon": "ic_bank_bharatiya_mahila",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09212438888"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "0114747211"
+      }
+    ]
+  },
+  {
+    "name": "Punjab and Sind Bank",
+    "icon": "ic_bank_punjab_and_sind",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "1800221908"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "1800221908"
+      }
+    ]
+  },
+  {
+    "name": "Cashnet Bank",
+    "icon": "ic_bank_cashnet",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "1800225087"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "1800225087"
+      }
+    ]
+  },
+  {
+    "name": "Saraswat Bank",
+    "icon": "ic_bank_saraswat",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "9223040000"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "1800229999"
+      }
+    ]
+  },
+  {
+    "name": "Centurion Bank of Punjab",
+    "icon": "ic_bank_centurion",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "1800443555"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004253555"
+      }
+    ]
+  },
+  {
+    "name": "Standard Chartered Bank",
+    "icon": "ic_bank_standard_chartered",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18003451212"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18003455000"
+      }
+    ]
+  },
+  {
+    "name": "State Bank of Bikaner and Jaipur",
+    "icon": "ic_bank_kikaner_and_jaipur",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09223866666"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18001806005"
+      }
+    ]
+  },
+  {
+    "name": "Deutsche Bank",
+    "icon": "ic_bank_deutsche",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18001236601"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18001236601"
+      }
+    ]
+  },
+  {
+    "name": "State Bank of Travancore",
+    "icon": "ic_bank_state_travancore",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09223866666"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004255566"
+      }
+    ]
+  },
+  {
+    "name": "Syndicate Bank",
+    "icon": "ic_bank_syndicate",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09664552255"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "08026639966"
+      }
+    ]
+  },
+  {
+    "name": "Dhanlaxmi Bank",
+    "icon": "ic_bank_dhanlaxmi",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "08067747700"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18004251747"
+      }
+    ]
+  },
+  {
+    "name": "United Bank of India",
+    "icon": "ic_bank_united_india",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "09015431345"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "18003450345"
+      }
+    ]
+  },
+  {
+    "name": "Karnataka Bank",
+    "icon": "ic_bank_karnataka",
+    "contacts": [
+      {
+        "name": "Check Balance",
+        "number": "18004251445"
+      },
+      {
+        "name": "Call Customer Care",
+        "number": "180042514444"
+      }
+    ]
+  }
+]

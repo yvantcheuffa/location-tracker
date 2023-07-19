@@ -1,0 +1,152 @@
+[
+  {
+    "name": "Airtel",
+    "icon": "ic_sip_airtel",
+    "contacts": [
+      {
+        "name": "How to Recharge",
+        "number": "*120*(16 digits code)#"
+      },
+      {
+        "name": "Main Balance Enquiry",
+        "number": "*123#"
+      },
+      {
+        "name": "Message Balance Enquiry",
+        "number": "*555#"
+      },
+      {
+        "name": "Net Balance Enquiry",
+        "number": "*123*10# or *123*11#"
+      },
+      {
+        "name": "How to Know your Number",
+        "number": "*282#"
+      },
+      {
+        "name": "Customer Care Number",
+        "number": "121"
+      }
+    ]
+  },
+  {
+    "name": "Jio",
+    "icon": "ic_sip_jio",
+    "contacts": [
+      {
+        "name": "How to Recharge",
+        "number": "Use MyJio App"
+      },
+      {
+        "name": "Main Balance Enquiry",
+        "number": "Use MyJio App"
+      },
+      {
+        "name": "Message Balance Enquiry",
+        "number": "Use MyJio App"
+      },
+      {
+        "name": "Net Balance Enquiry",
+        "number": "Use MyJio App"
+      },
+      {
+        "name": "How to Know your Number",
+        "number": "Use MyJio App"
+      },
+      {
+        "name": "Customer Care Number",
+        "number": "199"
+      }
+    ]
+  },
+  {
+    "name": "BSNL",
+    "icon": "ic_sip_bsnl",
+    "contacts": [
+      {
+        "name": "How to Recharge",
+        "number": "*123*(16 digits code)#"
+      },
+      {
+        "name": "Main Balance Enquiry",
+        "number": "*123#"
+      },
+      {
+        "name": "Message Balance Enquiry",
+        "number": "*112# then press 3"
+      },
+      {
+        "name": "Net Balance Enquiry",
+        "number": "*112# then press 2"
+      },
+      {
+        "name": "How to Know your Number",
+        "number": "*1#"
+      },
+      {
+        "name": "Customer Care Number",
+        "number": "1503"
+      }
+    ]
+  },
+  {
+    "name": "VI",
+    "icon": "ic_sip_vi",
+    "contacts": [
+      {
+        "name": "How to Recharge",
+        "number": "*199*1*3#"
+      },
+      {
+        "name": "Main Balance Enquiry",
+        "number": "*199*1*1#"
+      },
+      {
+        "name": "Message Balance Enquiry",
+        "number": "*199*5*6#"
+      },
+      {
+        "name": "Net Balance Enquiry",
+        "number": "*199*2*2#"
+      },
+      {
+        "name": "How to Know your Number",
+        "number": "*111*2#"
+      },
+      {
+        "name": "Customer Care Number",
+        "number": "199"
+      }
+    ]
+  },
+  {
+    "name": "MTNL",
+    "icon": "ic_sip_mtnl",
+    "contacts": [
+      {
+        "name": "How to Recharge",
+        "number": "*1243#"
+      },
+      {
+        "name": "Main Balance Enquiry",
+        "number": "*444#"
+      },
+      {
+        "name": "Message Balance Enquiry",
+        "number": "*112# then press 3"
+      },
+      {
+        "name": "Net Balance Enquiry",
+        "number": "*446#"
+      },
+      {
+        "name": "How to Know your Number",
+        "number": "*8888#"
+      },
+      {
+        "name": "Customer Care Number",
+        "number": "1503"
+      }
+    ]
+  }
+]

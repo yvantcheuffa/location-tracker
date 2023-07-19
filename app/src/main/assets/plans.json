@@ -1,0 +1,121 @@
+[
+  {
+    "sip": "Airtel",
+    "cities": [
+      "Andhra Pradesh",
+      "Assam",
+      "Bihar Jharkhand",
+      "Chennai",
+      "Delhi NCR",
+      "Gujarat",
+      "Haryana",
+      "Himachal Pradesh",
+      "Jammu Kashmir",
+      "Karnataka",
+      "Kerala",
+      "Kolkata",
+      "Madhya Pradesh Chhattisgarh",
+      "Maharashtra",
+      "Mumbai",
+      "North East",
+      "Orissa",
+      "Punjab",
+      "Rajasthan",
+      "Tamil Nadu",
+      "UP East",
+      "UP West",
+      "West Bengal"
+    ]
+  },
+  {
+    "sip": "BSNL",
+    "cities": [
+      "Andhra Pradesh",
+      "Assam",
+      "Bihar Jharkhand",
+      "Chennai",
+      "Delhi NCR",
+      "Gujarat",
+      "Haryana",
+      "Himachal Pradesh",
+      "Jammu Kashmir",
+      "Karnataka",
+      "Kerala",
+      "Kolkata",
+      "Madhya Pradesh Chhattisgarh",
+      "Maharashtra",
+      "Mumbai",
+      "North East",
+      "Orissa",
+      "Punjab",
+      "Rajasthan",
+      "Tamil Nadu",
+      "UP East",
+      "UP West",
+      "West Bengal"
+    ]
+  },
+  {
+    "sip": "Vodafone Idea",
+    "cities": [
+      "Andhra Pradesh",
+      "Assam",
+      "Bihar Jharkhand",
+      "Chennai",
+      "Delhi NCR",
+      "Gujarat",
+      "Haryana",
+      "Himachal Pradesh",
+      "Jammu Kashmir",
+      "Karnataka",
+      "Kerala",
+      "Kolkata",
+      "Madhya Pradesh Chhattisgarh",
+      "Maharashtra",
+      "Mumbai",
+      "North East",
+      "Orissa",
+      "Punjab",
+      "Rajasthan",
+      "Tamil Nadu",
+      "UP East",
+      "UP West",
+      "West Bengal"
+    ]
+  },
+  {
+    "sip": "Jio",
+    "cities": [
+      "Andhra Pradesh",
+      "Assam",
+      "Bihar Jharkhand",
+      "Chennai",
+      "Delhi NCR",
+      "Gujarat",
+      "Haryana",
+      "Himachal Pradesh",
+      "Jammu Kashmir",
+      "Karnataka",
+      "Kerala",
+      "Kolkata",
+      "Madhya Pradesh Chhattisgarh",
+      "Maharashtra",
+      "Mumbai",
+      "North East",
+      "Orissa",
+      "Punjab",
+      "Rajasthan",
+      "Tamil Nadu",
+      "UP East",
+      "UP West",
+      "West Bengal"
+    ]
+  },
+  {
+    "sip": "MTNL",
+    "cities": [
+      "Delhi NCR",
+      "Mumbai"
+    ]
+  }
+]

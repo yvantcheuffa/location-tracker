@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Location Tracker</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="menu_share">Share App</string>
+    <string name="menu_privacy">Privacy Policy</string>
+    <string name="menu_rating">Rate Us</string>
+    <string name="menu_tools">Tools</string>
+    <string name="tool_icon">Tool icon</string>
+    <string name="number_location">Number Location</string>
+    <string name="direction_map">Direction Map</string>
+    <string name="street_view">Street View</string>
+    <string name="near_by_places">Near By Places</string>
+    <string name="user_location">My Location</string>
+    <string name="recharge_plans">Recharge Plans</string>
+    <string name="sim_info">Sim Info</string>
+    <string name="bank_info">Bank Info</string>
+    <string name="ussd_codes">USSD Codes</string>
+    <string name="sharing_message">%1$s is a very good application to know information about unknown callers. I recommend you to use this app:\nhttps://play.google.com/store/apps/details?id=%2$s</string>
+    <string name="tell_friends">Tell Your Friends</string>
+    <string name="play_store_url">https://play.google.com/store/apps/details?id=%1$s</string>
+    <string name="sim_details">Sim Details</string>
+    <string name="bank_details">Bank Details</string>
+    <string name="famous_places">Famous\nPlaces</string>
+    <string name="seven_wonders">Seven\nWonders</string>
+    <string name="something_went_wrong">Oops! Something went Wrong</string>
+    <string name="enable_call_permission">Please enable the Call Permission</string>
+    <string name="error_private_number">The number is private</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_app_id">ca-app-pub-4550029070245149~5205177607</string>
+    <string name="get_plans">GET PLANS</string>
+    <string name="earth">Earth</string>
+</resources>

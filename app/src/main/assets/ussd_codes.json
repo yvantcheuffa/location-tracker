@@ -1,0 +1,644 @@
+[
+  {
+    "name": "Airtel",
+    "icon": "ic_sip_airtel",
+    "contacts": [
+      {
+        "name": "Airtel Balance Check",
+        "number": "*123#"
+      },
+      {
+        "name": "Airtel Customer Care Number",
+        "number": "121"
+      },
+      {
+        "name": "Airtel Complaint Number",
+        "number": "198"
+      },
+      {
+        "name": "Check for Free 2G Data Balance",
+        "number": "*123*10# or *123#"
+      },
+      {
+        "name": "Check for 3G Data Balance",
+        "number": "*123*10#"
+      },
+      {
+        "name": "Check for Airtel 4G Balance",
+        "number": "*123*8#"
+      },
+      {
+        "name": "Airtel Night Data Balance",
+        "number": "*123*197#"
+      },
+      {
+        "name": "Check for Local SMS Balance",
+        "number": "*123*2# or *555#"
+      },
+      {
+        "name": "Airtel Loan Number",
+        "number": "*141*10# or 52141"
+      },
+      {
+        "name": "My Airtel. My Offer",
+        "number": "*121#"
+      },
+      {
+        "name": "To Check Last 5 Transactions and also Value Added Services",
+        "number": "*121*7#"
+      },
+      {
+        "name": "Local Airtel to Airtel Night Minutes Balance",
+        "number": "*123*6#"
+      },
+      {
+        "name": "Check for Airtel to Airtel Mins Balance",
+        "number": "*123*1#"
+      },
+      {
+        "name": "Check for Free Local, STD SMS Balance",
+        "number": "*123*7#"
+      },
+      {
+        "name": "Check for Free STD Minutes Balance",
+        "number": "*123*8#"
+      },
+      {
+        "name": "Airtel Talk Time Gift Service [Share or Ask Talk Time]",
+        "number": "*141#"
+      },
+      {
+        "name": "Special 5 Offers",
+        "number": "*222#"
+      },
+      {
+        "name": "Airtel Live Services",
+        "number": "*321#"
+      },
+      {
+        "name": "Free Facebook Access [Rs. 1 per day]",
+        "number": "*325#"
+      },
+      {
+        "name": "Twitter Service",
+        "number": "*515#"
+      },
+      {
+        "name": "Airtel Special Offers and Rewards",
+        "number": "*566#"
+      },
+      {
+        "name": "GPRS (Activation/Deactivation)",
+        "number": "*567#"
+      },
+      {
+        "name": "Hello Tunes Menu",
+        "number": "*678#"
+      },
+      {
+        "name": "Missed Call Alert",
+        "number": "*888#"
+      },
+      {
+        "name": "Local National SMS Packs",
+        "number": "*777#"
+      },
+      {
+        "name": "Know Your own Airtel Number",
+        "number": "*282#"
+      },
+      {
+        "name": "Airtel Loan Code",
+        "number": "*141*10#"
+      }
+    ]
+  },
+  {
+    "name": "BSNL",
+    "icon": "ic_sip_bsnl",
+    "contacts": [
+      {
+        "name": "Balance & Validity",
+        "number": "*123#"
+      },
+      {
+        "name": "Bsnl Customer Care Number",
+        "number": "1800-180-1503"
+      },
+      {
+        "name": "Minutes Balance",
+        "number": "*123*2#"
+      },
+      {
+        "name": "SMS Balance",
+        "number": "*123*1# or *123*5# or *125#"
+      },
+      {
+        "name": "GPRS Data Balance",
+        "number": "*123*10#"
+      },
+      {
+        "name": "Network Call",
+        "number": "*123*5#"
+      },
+      {
+        "name": "Video Call Balance",
+        "number": "*123*9#"
+      },
+      {
+        "name": "GPRS Pack Balance",
+        "number": "*123*8#"
+      },
+      {
+        "name": "SMS Balance Enquiry",
+        "number": "*125#"
+      },
+      {
+        "name": "Last Call Charges Details",
+        "number": "*102#"
+      },
+      {
+        "name": "Voice Pack Info",
+        "number": "*126#"
+      },
+      {
+        "name": "Data Balance Enquiry",
+        "number": "*234#"
+      },
+      {
+        "name": "Local Network Call",
+        "number": "*123*6#"
+      },
+      {
+        "name": "2G Net Balance",
+        "number": "*123*10#"
+      },
+      {
+        "name": "Bsnl Balance Check Ussd Codes",
+        "number": "*123#"
+      },
+      {
+        "name": "Bsnl Internet Balance Check Code",
+        "number": "*124#"
+      },
+      {
+        "name": "Bsnk (know) own Number Check Code",
+        "number": "*222#"
+      },
+      {
+        "name": "Bsnl Minute Balance Check Ussd Codes",
+        "number": "*123*5#"
+      },
+      {
+        "name": "Bsnl FnF Number Enquiry Code",
+        "number": "*124*6#"
+      },
+      {
+        "name": "Bsnl 3G Internet Data Balance Check Ussd Code",
+        "number": "*124#"
+      },
+      {
+        "name": "Bsnl Call Detail Check Code",
+        "number": "*124#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Astrology Activation",
+        "number": "*456*21#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Astrology Deactivation",
+        "number": "*456*22#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Auto Tips Activation",
+        "number": "*456*96#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Auto Tips Deactivation",
+        "number": "*456*97#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Beauty Tips Activation",
+        "number": "*456*500#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Beauty Tips Deactivation",
+        "number": "*456*501#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Bollywood activation",
+        "number": "*456*99#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Bollywood Deactivation",
+        "number": "*456*98#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Cricket Activation",
+        "number": "*456*55#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Cricket Deactivation",
+        "number": "*456*56#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Gandhiji Quotes Activation",
+        "number": "*456*08#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Gandhiji Quotes Deactivation",
+        "number": "*456*09#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Geeta Activation",
+        "number": "*456*71#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Geeta Deactivation",
+        "number": "*456*72#"
+      },
+      {
+        "name": "Bsnl Ussd Code for General Knowledge Activation",
+        "number": "*456*508#"
+      },
+      {
+        "name": "Bsnl Ussd Code for General Knowledge Deactivation",
+        "number": "*456*509#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Gurbani Activation",
+        "number": "*456*61#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Gurbani Deactivation",
+        "number": "*456*62#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Health Tips Activation",
+        "number": "*456*636#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Health Tips Deactivation",
+        "number": "*456*637#"
+      },
+      {
+        "name": "Bsnl Ussd Code for History Activation",
+        "number": "*456*77#"
+      },
+      {
+        "name": "Bsnl Ussd Code for History Deactivation",
+        "number": "*456*78#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Mega Pack Activation",
+        "number": "*456*01#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Mega Pack Deactivation",
+        "number": "*456*02#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Money Matters Activation",
+        "number": "*456*43#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Money Matters Deactivation",
+        "number": "*456*44#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Motivational Quotes Activation",
+        "number": "*456*506#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Motivational Quotes Deactivation",
+        "number": "*456*507#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Myths Activation",
+        "number": "*456*94#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Myths Deactivation",
+        "number": "*456*95#"
+      },
+      {
+        "name": "Bsnl Ussd Code for News Activation",
+        "number": "*456*31#"
+      },
+      {
+        "name": "Bsnl Ussd Code for News Deactivation",
+        "number": "*456*32#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Power of Words Activation",
+        "number": "*456*88#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Power of Words Deactivation",
+        "number": "*456*89#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Ramcharitmanas Activation",
+        "number": "*456*408#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Ramcharitmanas Deactivation",
+        "number": "*456*409#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Sai Baba Activation",
+        "number": "*456*724#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Sai Baba Deactivation",
+        "number": "*456*725#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Stock Activation",
+        "number": "*456*41#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Stock Deactivation",
+        "number": "*456*42#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Freedom Activation",
+        "number": "*456*512#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Freedom Deactivation",
+        "number": "*456*513#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Kollywood Activation",
+        "number": "*456*522#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Kollywood Deactivation",
+        "number": "*456*523#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Mollywood Activation",
+        "number": "*456*520#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Mollywood Deactivation",
+        "number": "*456*521#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Navratri Activation",
+        "number": "*456*81#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Navratri Deactivation",
+        "number": "*456*82#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Shree Ganesha",
+        "number": "*456*514#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Shree Ganesha",
+        "number": "*456*515#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Shree Krishna Activation",
+        "number": "*456*516#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Shree Krishna Activation",
+        "number": "*456*517#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Tollywood Activation",
+        "number": "*456*518#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Tollywood Activation",
+        "number": "*456*519#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Karvachauth Activation",
+        "number": "*456*83#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Karvachauth Activation",
+        "number": "*456*84#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Tips of Bride Activation",
+        "number": "*456*502#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Tips of Bride Deactivation",
+        "number": "*456*503#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Tips of Groom Activation",
+        "number": "*456*504#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Tips of Groom Deactivation",
+        "number": "*456*505#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Sardar Patel Activation",
+        "number": "*456*92#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Sardar Patel Deactivation",
+        "number": "*456*93#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Diwali Activation",
+        "number": "*456*90#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Diwali Deactivation",
+        "number": "*456*91#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Chacha Nehru Activation",
+        "number": "*456*14#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Chacha Nehru Deactivation",
+        "number": "*456*15#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Indira Gandhi Activation",
+        "number": "*456*16#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Indira Gandhi Deactivation",
+        "number": "*456*17#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Bakra-Eid Activation",
+        "number": "*456*786#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Bakra-Eid Deactivation",
+        "number": "*456*786#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Christmas Activation",
+        "number": "*456*18#"
+      },
+      {
+        "name": "Bsnl Ussd Code for Christmas Deactivation",
+        "number": "*456*19#"
+      }
+    ]
+  },
+  {
+    "name": "Jio",
+    "icon": "ic_sip_jio",
+    "contacts": [
+      {
+        "name": "Jio Balance Check/Talktime",
+        "number": "*333#"
+      },
+      {
+        "name": "Jio Customer Care Number",
+        "number": "198"
+      },
+      {
+        "name": "Jio Complaint Number",
+        "number": "198"
+      },
+      {
+        "name": "Check for Jio 4G Balance",
+        "number": "MBAL to 55333"
+      },
+      {
+        "name": "Know my Jio Number",
+        "number": "*1#"
+      },
+      {
+        "name": "Check Prepaid Balance & Validity",
+        "number": "sms BAL to 199"
+      },
+      {
+        "name": "Know Bill Amount",
+        "number": "sms BILL to 199"
+      },
+      {
+        "name": "Activate 4G Data",
+        "number": "Call 1925 or sms START to 1925"
+      },
+      {
+        "name": "Check Data Balance",
+        "number": "*333*1*3#"
+      },
+      {
+        "name": "Check Remaining SMS Balance",
+        "number": "*367*2#"
+      },
+      {
+        "name": "To Activate Miss Call Alert",
+        "number": "*333*3*2*1#"
+      },
+      {
+        "name": "To Deactivate Miss Call Alert",
+        "number": "*333*3*2*2#"
+      },
+      {
+        "name": "To Check the VAS Balance",
+        "number": "*333*1*4*1#"
+      },
+      {
+        "name": "Caller Tune Activation Code",
+        "number": "*333*3*1*1#"
+      },
+      {
+        "name": "Deactivate Jio Caller Tune",
+        "number": "*333*3*1*2#"
+      },
+      {
+        "name": "Check Call Rate",
+        "number": "sms TARIFF to 191"
+      },
+      {
+        "name": "Know Jio Number of JioFi Device",
+        "number": "sms JIO to 199#"
+      }
+    ]
+  },
+  {
+    "name": "MTNL",
+    "icon": "ic_sip_mtnl",
+    "contacts": [
+      {
+        "name": "MTNL Main Balance Check Code",
+        "number": "*444#"
+      },
+      {
+        "name": "MTNL 3G Internet Data Balance Check Code",
+        "number": "*446#"
+      },
+      {
+        "name": "MTNL Own Mobile Number Check Code",
+        "number": "*8888#"
+      },
+      {
+        "name": "MTNL Minute Balance Check Code",
+        "number": "*446#"
+      },
+      {
+        "name": "MTNL Current STV Jio Plan Details",
+        "number": "*111*2#"
+      },
+      {
+        "name": "Recharge any MTNL Prepaid Mobile",
+        "number": "9868199900"
+      },
+      {
+        "name": "Consumer Care/Complaint Center Number for GSM",
+        "number": "1503 toll-free"
+      },
+      {
+        "name": "MTNL News Pack",
+        "number": "*315*1#"
+      }
+    ]
+  },
+  {
+    "name": "VI",
+    "icon": "ic_sip_vi",
+    "contacts": [
+      {
+        "name": "Check Main Balance",
+        "number": "*199*2*1#"
+      },
+      {
+        "name": "Check Internet Balance",
+        "number": "*199*2*2#"
+      },
+      {
+        "name": "4G/3G/2G Internet Offers",
+        "number": "*199*1*3#"
+      },
+      {
+        "name": "Recharge Offer",
+        "number": "*199*1*7#"
+      },
+      {
+        "name": "Voice, SMS, Roaming Offers",
+        "number": "*199*1*8#"
+      },
+      {
+        "name": "Activate Vodafone VAS Service",
+        "number": "*199*3*1#"
+      },
+      {
+        "name": "Combo Recharge Offers",
+        "number": "*199*5*3#"
+      },
+      {
+        "name": "SMS Recharge Offers",
+        "number": "*199*5*6#"
+      }
+    ]
+  }
+]
