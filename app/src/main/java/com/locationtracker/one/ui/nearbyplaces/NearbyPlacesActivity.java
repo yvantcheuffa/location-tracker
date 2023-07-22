@@ -2,6 +2,7 @@ package com.locationtracker.one.ui.nearbyplaces;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static com.locationtracker.one.Utils.getAdSize;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -12,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.locationtracker.one.R;
 import com.locationtracker.one.databinding.ActivityNearbyPlacesBinding;
 
@@ -32,7 +34,7 @@ public class NearbyPlacesActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         requestLocationPermission();
-        initializeBannerAd();
+        loadBannerAd();
     }
 
     @Override
@@ -41,11 +43,13 @@ public class NearbyPlacesActivity extends AppCompatActivity {
         return (super.onOptionsItemSelected(item));
     }
 
-    private void initializeBannerAd() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adBannerView.loadAd(adRequest);
+    private void loadBannerAd() {
+        AdSize adSize = getAdSize(this, binding.adViewContainer.getWidth(), getResources().getDisplayMetrics().density);
+        AdView adView = new AdView(this);
+        binding.adViewContainer.addView(adView);
+        adView.setAdSize(adSize);
+        adView.setAdUnitId(getString(R.string.banner_ad_unit_id));
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     private boolean hasLocationPermission() {

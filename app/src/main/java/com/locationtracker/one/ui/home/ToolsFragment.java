@@ -1,5 +1,7 @@
 package com.locationtracker.one.ui.home;
 
+import static com.locationtracker.one.Utils.getAdSize;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,9 +15,10 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.locationtracker.one.R;
@@ -67,7 +70,16 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
 
         adRequest = new AdRequest.Builder().build();
         initializeMenu();
-        initializeBannerAd();
+        loadBannerAd();
+    }
+
+    private void loadBannerAd() {
+        AdSize adSize = getAdSize(requireActivity(), binding.adViewContainer.getWidth(), getResources().getDisplayMetrics().density);
+        AdView adView = new AdView(requireContext());
+        binding.adViewContainer.addView(adView);
+        adView.setAdSize(adSize);
+        adView.setAdUnitId(getString(R.string.banner_ad_unit_id));
+        adView.loadAd(adRequest);
     }
 
     @Override
@@ -149,12 +161,6 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
                 new Tool(R.string.bank_info, R.drawable.ic_bank_info),
                 new Tool(R.string.ussd_codes, R.drawable.ic_ussd_codes)
         ));
-    }
-
-    private void initializeBannerAd() {
-        MobileAds.initialize(requireContext(), initializationStatus -> {
-        });
-        binding.adBannerView.loadAd(adRequest);
     }
 
     private void initializeMenu() {

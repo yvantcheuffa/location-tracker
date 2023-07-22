@@ -1,5 +1,7 @@
 package com.locationtracker.one.ui.rechargeplans;
 
+import static com.locationtracker.one.Utils.getAdSize;
+
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabLayout;
 import com.locationtracker.one.R;
 import com.locationtracker.one.databinding.ActivityRechargePlansBinding;
@@ -35,7 +38,7 @@ public class RechargePlansActivity extends AppCompatActivity {
         binding = ActivityRechargePlansBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        initializeBannerAd();
+        loadBannerAd();
         loadPlans();
     }
 
@@ -94,10 +97,12 @@ public class RechargePlansActivity extends AppCompatActivity {
         return (super.onOptionsItemSelected(item));
     }
 
-    private void initializeBannerAd() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adBannerView.loadAd(adRequest);
+    private void loadBannerAd() {
+        AdSize adSize = getAdSize(this, binding.adViewContainer.getWidth(), getResources().getDisplayMetrics().density);
+        AdView adView = new AdView(this);
+        binding.adViewContainer.addView(adView);
+        adView.setAdSize(adSize);
+        adView.setAdUnitId(getString(R.string.banner_ad_unit_id));
+        adView.loadAd(new AdRequest.Builder().build());
     }
 }

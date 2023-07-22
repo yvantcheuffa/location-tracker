@@ -1,5 +1,6 @@
 package com.locationtracker.one.ui.ussd;
 
+import static com.locationtracker.one.Utils.getAdSize;
 import static com.locationtracker.one.Utils.loadFileContent;
 import static com.locationtracker.one.ui.contact.ContactActivity.ARG_CONTACTS;
 import static com.locationtracker.one.ui.contact.ContactActivity.ARG_TITLE;
@@ -13,8 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.gson.Gson;
@@ -63,7 +65,7 @@ public class USSDCodeActivity extends AppCompatActivity implements OnUSSDCodeCli
         adRequest = new AdRequest.Builder().build();
 
         initializeGridView();
-        initializeBannerAd();
+        loadBannerAd();
     }
 
     @Override
@@ -88,10 +90,13 @@ public class USSDCodeActivity extends AppCompatActivity implements OnUSSDCodeCli
         }
     }
 
-    private void initializeBannerAd() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-        binding.adBannerView.loadAd(adRequest);
+    private void loadBannerAd() {
+        AdSize adSize = getAdSize(this, binding.adViewContainer.getWidth(), getResources().getDisplayMetrics().density);
+        AdView adView = new AdView(this);
+        binding.adViewContainer.addView(adView);
+        adView.setAdSize(adSize);
+        adView.setAdUnitId(getString(R.string.banner_ad_unit_id));
+        adView.loadAd(adRequest);
     }
 
     private void initializeInterstitialAd() {

@@ -1,5 +1,7 @@
 package com.locationtracker.one.ui.streetview;
 
+import static com.locationtracker.one.Utils.getAdSize;
+
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -9,8 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.locationtracker.one.R;
@@ -47,7 +50,7 @@ public class StreetViewActivity extends AppCompatActivity {
         adRequest = new AdRequest.Builder().build();
 
         setupListeners();
-        initializeBannerAd();
+        loadBannerAd();
     }
 
     @Override
@@ -71,11 +74,13 @@ public class StreetViewActivity extends AppCompatActivity {
         );
     }
 
-    private void initializeBannerAd() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adBannerView.loadAd(adRequest);
+    private void loadBannerAd() {
+        AdSize adSize = getAdSize(this, binding.adViewContainer.getWidth(), getResources().getDisplayMetrics().density);
+        AdView adView = new AdView(this);
+        binding.adViewContainer.addView(adView);
+        adView.setAdSize(adSize);
+        adView.setAdUnitId(getString(R.string.banner_ad_unit_id));
+        adView.loadAd(new AdRequest.Builder().build());
     }
 
     private void setupListeners() {
