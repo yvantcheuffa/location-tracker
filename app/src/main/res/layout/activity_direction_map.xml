@@ -6,31 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.directionmap.DirectionMapActivity">
 
-    <ImageView
+    <com.jsibbold.zoomage.ZoomageView
         android:id="@+id/map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_globe"
-        android:contentDescription="@string/earth"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/ad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:adjustViewBounds="true"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_globe_map"
+        app:zoomage_restrictBounds="false"
+        app:zoomage_animateOnReset="true"
+        app:zoomage_autoResetMode="UNDER"
+        app:zoomage_autoCenter="true"
+        app:zoomage_zoomable="true"
+        app:zoomage_translatable="true"
+        android:scaleType="centerCrop"
+        app:zoomage_minScale="0.6"
+        app:zoomage_maxScale="8" />
 
     <LinearLayout
+        android:id="@+id/ad"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/color_secondary"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:paddingBottom="@dimen/small_padding">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.gms.ads.AdView
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ad_banner_view"
-            xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             ads:adSize="BANNER"
             ads:adUnitId="@string/banner_ad_unit_id" />

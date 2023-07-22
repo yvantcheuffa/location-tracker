@@ -1,8 +1,8 @@
 package com.locationtracker.one.ui.home;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +23,7 @@ import com.locationtracker.one.ui.directionmap.DirectionMapActivity;
 import com.locationtracker.one.ui.location.UserLocationActivity;
 import com.locationtracker.one.ui.nearbyplaces.NearbyPlacesActivity;
 import com.locationtracker.one.ui.numberlocation.NumberLocationActivity;
-import com.locationtracker.one.ui.rechargeplans.RechargePlansActivity;
+import com.locationtracker.one.ui.rechargedetails.RechargeDetailsActivity;
 import com.locationtracker.one.ui.siminfo.SIMInfoActivity;
 import com.locationtracker.one.ui.streetview.StreetViewActivity;
 import com.locationtracker.one.ui.ussd.USSDCodeActivity;
@@ -51,7 +51,7 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
     @Override
     public void onStart() {
         super.onStart();
-        initializeInterstitialAd();
+        new Handler().postDelayed(this::initializeInterstitialAd, 3000);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
     }
 
     private void initializeBannerAd() {
-        MobileAds.initialize(getContext(), initializationStatus -> {
+        MobileAds.initialize(requireContext(), initializationStatus -> {
         });
         AdRequest adRequest = new AdRequest.Builder().build();
         binding.adBannerView.loadAd(adRequest);
@@ -69,13 +69,13 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
     private void initializeInterstitialAd() {
         AdRequest adRequest = new AdRequest.Builder().build();
         InterstitialAd.load(
-                getContext(),
+                requireContext(),
                 getString(R.string.interstitial_ad_unit_id),
                 adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        interstitialAd.show(getActivity());
+                        interstitialAd.show(requireActivity());
                     }
                 }
         );
@@ -83,11 +83,8 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
 
     private void initializeMenu() {
         ArrayList<Tool> tools = getTools();
-        Context context = getContext();
-        if (context != null) {
-            ToolAdapter adapter = new ToolAdapter(getContext(), tools, this);
-            binding.toolGridView.setAdapter(adapter);
-        }
+        ToolAdapter adapter = new ToolAdapter(requireContext(), tools, this);
+        binding.toolGridView.setAdapter(adapter);
     }
 
     private ArrayList<Tool> getTools() {
@@ -113,31 +110,31 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
     @Override
     public void onClick(Tool tool) {
         if (tool.getIconResId() == R.drawable.ic_number_location) {
-            startActivity(new Intent(getContext(), NumberLocationActivity.class));
+            startActivity(new Intent(requireContext(), NumberLocationActivity.class));
         }
         if (tool.getIconResId() == R.drawable.ic_direction_map) {
-            startActivity(new Intent(getContext(), DirectionMapActivity.class));
+            startActivity(new Intent(requireContext(), DirectionMapActivity.class));
         }
         if (tool.getIconResId() == R.drawable.ic_street_view) {
-            startActivity(new Intent(getContext(), StreetViewActivity.class));
+            startActivity(new Intent(requireContext(), StreetViewActivity.class));
         }
         if (tool.getIconResId() == R.drawable.ic_nearby_places) {
-            startActivity(new Intent(getContext(), NearbyPlacesActivity.class));
+            startActivity(new Intent(requireContext(), NearbyPlacesActivity.class));
         }
         if (tool.getIconResId() == R.drawable.ic_user_location) {
-            startActivity(new Intent(getContext(), UserLocationActivity.class));
+            startActivity(new Intent(requireContext(), UserLocationActivity.class));
         }
         if (tool.getIconResId() == R.drawable.ic_recharge_plans) {
-            startActivity(new Intent(getContext(), RechargePlansActivity.class));
+            startActivity(new Intent(requireContext(), RechargeDetailsActivity.class));
         }
         if (tool.getIconResId() == R.drawable.ic_sim_info) {
-            startActivity(new Intent(getContext(), SIMInfoActivity.class));
+            startActivity(new Intent(requireContext(), SIMInfoActivity.class));
         }
         if (tool.getIconResId() == R.drawable.ic_bank_info) {
-            startActivity(new Intent(getContext(), BankActivity.class));
+            startActivity(new Intent(requireContext(), BankActivity.class));
         }
         if (tool.getIconResId() == R.drawable.ic_ussd_codes) {
-            startActivity(new Intent(getContext(), USSDCodeActivity.class));
+            startActivity(new Intent(requireContext(), USSDCodeActivity.class));
         }
     }
 }

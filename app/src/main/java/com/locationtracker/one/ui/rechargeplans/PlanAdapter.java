@@ -1,56 +1,40 @@
 package com.locationtracker.one.ui.rechargeplans;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import com.locationtracker.one.databinding.PlanItemBinding;
 import com.locationtracker.one.model.Plan;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class PlanAdapter extends ArrayAdapter<Plan> {
-    private final List<Plan> plans;
 
-    public PlanAdapter(Context context, int textViewResourceId, List<Plan> plans) {
-        super(context, textViewResourceId, plans);
-        this.plans = plans;
+    public PlanAdapter(@NonNull Context context, ArrayList<Plan> plans) {
+        super(context, 0, plans);
     }
-
-    @Override
-    public int getCount() {
-        return plans.size();
-    }
-
-    @Override
-    public Plan getItem(int position) {
-        return plans.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-        TextView label = (TextView) super.getView(position, convertView, parent);
-        label.setTextColor(Color.BLACK);
-        label.setText(plans.get(position).getSip());
-        return label;
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        PlanItemBinding binding = PlanItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+
+        Plan plan = getItem(position);
+        binding.price.setText(plan.getPrice());
+        binding.description.setText(plan.getDescription());
+
+        return binding.getRoot();
     }
 
+
     @Override
-    public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
-        TextView label = (TextView) super.getDropDownView(position, convertView, parent);
-        label.setTextColor(Color.BLACK);
-        label.setText(plans.get(position).getSip());
-        return label;
+    public boolean isEnabled(int position) {
+        return false;
     }
 }

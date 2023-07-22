@@ -6,6 +6,7 @@ import static com.locationtracker.one.ui.contact.ContactActivity.ARG_TITLE;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -47,7 +48,7 @@ public class BankActivity extends AppCompatActivity implements OnBankClickListen
     @Override
     protected void onStart() {
         super.onStart();
-        initializeInterstitialAd();
+        new Handler().postDelayed(this::initializeInterstitialAd, 3000);
     }
 
     private void initializeBannerAd() {

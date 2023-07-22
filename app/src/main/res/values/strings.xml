@@ -13,6 +13,7 @@
     <string name="street_view">Street View</string>
     <string name="near_by_places">Near By Places</string>
     <string name="user_location">My Location</string>
+    <string name="recharge_details">Recharge Details</string>
     <string name="recharge_plans">Recharge Plans</string>
     <string name="sim_info">Sim Info</string>
     <string name="bank_info">Bank Info</string>
@@ -33,4 +34,10 @@
     <string name="admob_app_id">ca-app-pub-4550029070245149~5205177607</string>
     <string name="get_plans">GET PLANS</string>
     <string name="earth">Earth</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="loading">Loading ...</string>
+    <string name="recharge_plans_error">An error occurred when loading plans</string>
+    <string name="loading_plans">Loading plans, please wait ...</string>
 </resources>

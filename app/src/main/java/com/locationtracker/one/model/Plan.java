@@ -1,24 +1,24 @@
 package com.locationtracker.one.model;
 
-import java.util.List;
+import java.io.Serializable;
 
-public class Plan {
-    private String sip;
-    private List<String> cities;
+public class Plan implements Serializable {
+    private String price;
+    private String description;
 
-    public String getSip() {
-        return sip;
+    public String getPrice() {
+        return price;
     }
 
-    public void setSip(String sip) {
-        this.sip = sip;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public List<String> getCities() {
-        return cities;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCities(List<String> cities) {
-        this.cities = cities;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

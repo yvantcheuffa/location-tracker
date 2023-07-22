@@ -1,6 +1,7 @@
 package com.locationtracker.one.ui.streetview;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -35,7 +36,7 @@ public class StreetViewActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        initializeInterstitialAd();
+        new Handler().postDelayed(this::initializeInterstitialAd, 3000);
     }
 
     private void initializeBannerAd() {

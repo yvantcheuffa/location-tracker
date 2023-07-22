@@ -5,6 +5,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,7 @@ public class NearbyPlacesActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        initializeInterstitialAd();
+        new Handler().postDelayed(this::initializeInterstitialAd, 3000);
     }
 
     private void initializeBannerAd() {

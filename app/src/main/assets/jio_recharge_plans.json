@@ -1,0 +1,27 @@
+[
+  {
+    "title": "TOP UP",
+    "plans": [
+      {
+        "price": "₹ 50",
+        "description": "Talktime: Rs 39.37 | Validity: Unlimited | Talktime can also be used for International Services"
+      },
+      {
+        "price": "₹ 10",
+        "description": "Talktime: Rs 7.47 | Validity: Unlimited | Talktime can also be used for International Services"
+      },
+      {
+        "price": "₹ 20",
+        "description": "Talktime: Rs 14.95 | Validity: Unlimited | Talktime can also be used for International Services"
+      },
+      {
+        "price": "₹ 1000",
+        "description": "Talktime: Rs 844.46 | Validity: Unlimited | Talktime can also be used for International Services"
+      },
+      {
+        "price": "₹ 100",
+        "description": "Talktime: Rs 81.75 | Validity: Unlimited | Talktime can also be used for International Services"
+      }
+    ]
+  }
+]
