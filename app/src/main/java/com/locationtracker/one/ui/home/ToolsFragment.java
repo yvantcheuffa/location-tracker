@@ -2,16 +2,19 @@ package com.locationtracker.one.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
@@ -34,6 +37,24 @@ import java.util.List;
 public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickListener {
 
     private FragmentToolsBinding binding;
+    private InterstitialAd mInterstitialAd;
+    private AdRequest adRequest;
+    private Class<? extends AppCompatActivity> mNextActivityClass;
+    private Tool mCurrentTool;
+
+    private final FullScreenContentCallback interstitialFullscreenCallback = new FullScreenContentCallback() {
+        @Override
+        public void onAdDismissedFullScreenContent() {
+            mInterstitialAd = null;
+            startActivity(new Intent(requireContext(), mNextActivityClass));
+            mNextActivityClass = null;
+        }
+
+        @Override
+        public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+            startActivityByTool(mCurrentTool);
+        }
+    };
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentToolsBinding.inflate(inflater, container, false);
@@ -44,47 +65,76 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        adRequest = new AdRequest.Builder().build();
         initializeMenu();
         initializeBannerAd();
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        new Handler().postDelayed(this::initializeInterstitialAd, 3000);
+    public void onResume() {
+        super.onResume();
+        initializeInterstitialAd();
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
-    private void initializeBannerAd() {
-        MobileAds.initialize(requireContext(), initializationStatus -> {
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adBannerView.loadAd(adRequest);
+    @Override
+    public void onClick(Tool tool) {
+        mCurrentTool = tool;
+        setNextActivity();
+        if (mInterstitialAd == null) {
+            startActivityByTool(tool);
+        } else {
+            mInterstitialAd.show(requireActivity());
+        }
     }
 
-    private void initializeInterstitialAd() {
-        AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(
-                requireContext(),
-                getString(R.string.interstitial_ad_unit_id),
-                adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        interstitialAd.show(requireActivity());
-                    }
-                }
-        );
+    private void setNextActivity() {
+        if (mCurrentTool.getIconResId() == R.drawable.ic_number_location) {
+            mNextActivityClass = NumberLocationActivity.class;
+        } else if (mCurrentTool.getIconResId() == R.drawable.ic_direction_map) {
+            mNextActivityClass = DirectionMapActivity.class;
+        } else if (mCurrentTool.getIconResId() == R.drawable.ic_street_view) {
+            mNextActivityClass = StreetViewActivity.class;
+        } else if (mCurrentTool.getIconResId() == R.drawable.ic_nearby_places) {
+            mNextActivityClass = NearbyPlacesActivity.class;
+        } else if (mCurrentTool.getIconResId() == R.drawable.ic_user_location) {
+            mNextActivityClass = UserLocationActivity.class;
+        } else if (mCurrentTool.getIconResId() == R.drawable.ic_recharge_plans) {
+            mNextActivityClass = RechargeDetailsActivity.class;
+        } else if (mCurrentTool.getIconResId() == R.drawable.ic_sim_info) {
+            mNextActivityClass = SIMInfoActivity.class;
+        } else if (mCurrentTool.getIconResId() == R.drawable.ic_bank_info) {
+            mNextActivityClass = BankActivity.class;
+        } else if (mCurrentTool.getIconResId() == R.drawable.ic_ussd_codes) {
+            mNextActivityClass = USSDCodeActivity.class;
+        }
     }
 
-    private void initializeMenu() {
-        ArrayList<Tool> tools = getTools();
-        ToolAdapter adapter = new ToolAdapter(requireContext(), tools, this);
-        binding.toolGridView.setAdapter(adapter);
+    private void startActivityByTool(Tool tool) {
+        if (tool.getIconResId() == R.drawable.ic_number_location) {
+            startActivity(new Intent(requireContext(), NumberLocationActivity.class));
+        } else if (tool.getIconResId() == R.drawable.ic_direction_map) {
+            startActivity(new Intent(requireContext(), DirectionMapActivity.class));
+        } else if (tool.getIconResId() == R.drawable.ic_street_view) {
+            startActivity(new Intent(requireContext(), StreetViewActivity.class));
+        } else if (tool.getIconResId() == R.drawable.ic_nearby_places) {
+            startActivity(new Intent(requireContext(), NearbyPlacesActivity.class));
+        } else if (tool.getIconResId() == R.drawable.ic_user_location) {
+            startActivity(new Intent(requireContext(), UserLocationActivity.class));
+        } else if (tool.getIconResId() == R.drawable.ic_recharge_plans) {
+            startActivity(new Intent(requireContext(), RechargeDetailsActivity.class));
+        } else if (tool.getIconResId() == R.drawable.ic_sim_info) {
+            startActivity(new Intent(requireContext(), SIMInfoActivity.class));
+        } else if (tool.getIconResId() == R.drawable.ic_bank_info) {
+            startActivity(new Intent(requireContext(), BankActivity.class));
+        } else if (tool.getIconResId() == R.drawable.ic_ussd_codes) {
+            startActivity(new Intent(requireContext(), USSDCodeActivity.class));
+        }
     }
 
     private ArrayList<Tool> getTools() {
@@ -101,40 +151,35 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
         ));
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    private void initializeBannerAd() {
+        MobileAds.initialize(requireContext(), initializationStatus -> {
+        });
+        binding.adBannerView.loadAd(adRequest);
     }
 
-    @Override
-    public void onClick(Tool tool) {
-        if (tool.getIconResId() == R.drawable.ic_number_location) {
-            startActivity(new Intent(requireContext(), NumberLocationActivity.class));
-        }
-        if (tool.getIconResId() == R.drawable.ic_direction_map) {
-            startActivity(new Intent(requireContext(), DirectionMapActivity.class));
-        }
-        if (tool.getIconResId() == R.drawable.ic_street_view) {
-            startActivity(new Intent(requireContext(), StreetViewActivity.class));
-        }
-        if (tool.getIconResId() == R.drawable.ic_nearby_places) {
-            startActivity(new Intent(requireContext(), NearbyPlacesActivity.class));
-        }
-        if (tool.getIconResId() == R.drawable.ic_user_location) {
-            startActivity(new Intent(requireContext(), UserLocationActivity.class));
-        }
-        if (tool.getIconResId() == R.drawable.ic_recharge_plans) {
-            startActivity(new Intent(requireContext(), RechargeDetailsActivity.class));
-        }
-        if (tool.getIconResId() == R.drawable.ic_sim_info) {
-            startActivity(new Intent(requireContext(), SIMInfoActivity.class));
-        }
-        if (tool.getIconResId() == R.drawable.ic_bank_info) {
-            startActivity(new Intent(requireContext(), BankActivity.class));
-        }
-        if (tool.getIconResId() == R.drawable.ic_ussd_codes) {
-            startActivity(new Intent(requireContext(), USSDCodeActivity.class));
-        }
+    private void initializeMenu() {
+        ArrayList<Tool> tools = getTools();
+        ToolAdapter adapter = new ToolAdapter(requireContext(), tools, this);
+        binding.toolGridView.setAdapter(adapter);
+    }
+
+    private void initializeInterstitialAd() {
+        InterstitialAd.load(
+                requireContext(),
+                getString(R.string.interstitial_ad_unit_id),
+                adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        mInterstitialAd = interstitialAd;
+                        mInterstitialAd.setFullScreenContentCallback(interstitialFullscreenCallback);
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        mInterstitialAd = null;
+                    }
+                }
+        );
     }
 }

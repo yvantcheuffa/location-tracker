@@ -1,14 +1,10 @@
 package com.locationtracker.one.ui.rechargedetails;
 
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static com.locationtracker.one.Utils.loadFileContent;
 import static com.locationtracker.one.ui.rechargeplans.RechargePlansActivity.ARG_RECHARGE_PLANS;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,12 +12,10 @@ import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
@@ -40,14 +34,26 @@ import java.util.List;
 
 public class RechargeDetailsActivity extends AppCompatActivity {
 
-    private static final int PERMISSION_REQUEST_CODE = 101;
     private ActivityRechargeDetailsBinding binding;
     private ArrayAdapter<String> citiesAdapter;
     private ArrayList<RechargeDetail> rechargeDetails;
-    private final AdRequest adRequest = new AdRequest.Builder().build();
+    private AdRequest adRequest;
+    private InterstitialAd mInterstitialAd;
+    private List<RechargePlan> mRechargePlans;
+    private final FullScreenContentCallback interstitialFullscreenCallback = new FullScreenContentCallback() {
+        @Override
+        public void onAdDismissedFullScreenContent() {
+            mInterstitialAd = null;
+            openPlansActivity();
+        }
+
+        @Override
+        public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+            openPlansActivity();
+        }
+    };
     private ArrayList<RechargePlan> airtelRechargePlans;
     private ArrayList<RechargePlan> jioRechargePlans;
-    private int activeSipIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +65,23 @@ public class RechargeDetailsActivity extends AppCompatActivity {
         binding = ActivityRechargeDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        adRequest = new AdRequest.Builder().build();
+
         initializeBannerAd();
         initializeSpinners();
         setupClickListeners();
         airtelRechargePlans = getAirtelRechargePlans();
         jioRechargePlans = getJioRechargePlans();
+    }
+
+    private void setupClickListeners() {
+        binding.btnGetPlans.setOnClickListener(view -> {
+            if (mInterstitialAd == null) {
+                openPlansActivity();
+            } else {
+                mInterstitialAd.show(this);
+            }
+        });
     }
 
     private ArrayList<RechargePlan> getAirtelRechargePlans() {
@@ -80,71 +98,10 @@ public class RechargeDetailsActivity extends AppCompatActivity {
         return new Gson().fromJson(jsonContent, listType);
     }
 
-    private void setupClickListeners() {
-        binding.btnGetPlans.setOnClickListener(view -> InterstitialAd.load(
-                this,
-                getString(R.string.interstitial_ad_unit_id),
-                adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        interstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                            @Override
-                            public void onAdDismissedFullScreenContent() {
-                                openPlansActivity();
-                            }
-
-                            @Override
-                            public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                                openPlansActivity();
-                            }
-                        });
-                        interstitialAd.show(RechargeDetailsActivity.this);
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        openPlansActivity();
-                    }
-                }
-        ));
-    }
-
-    private void openPlansActivity() {
-        Intent intent = new Intent(this, RechargePlansActivity.class);
-        if (activeSipIndex == 0) {
-            intent.putExtra(ARG_RECHARGE_PLANS, (Serializable) airtelRechargePlans);
-        } else if(activeSipIndex == 3) {
-            intent.putExtra(ARG_RECHARGE_PLANS, (Serializable) jioRechargePlans);
-        }
-        startActivity(intent);
-    }
-
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) finish();
-        return (super.onOptionsItemSelected(item));
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        new Handler().postDelayed(this::initializeInterstitialAd, 3000);
-    }
-
-    private void checkPermissions() {
-        if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PERMISSION_GRANTED) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
-            }
-        }
-    }
-
-    private void initializeBannerAd() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adBannerView.loadAd(adRequest);
+    public void onResume() {
+        super.onResume();
+        initializeInterstitialAd();
     }
 
     private void initializeInterstitialAd() {
@@ -155,16 +112,30 @@ public class RechargeDetailsActivity extends AppCompatActivity {
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        interstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                            @Override
-                            public void onAdDismissedFullScreenContent() {
-                                checkPermissions();
-                            }
-                        });
-                        interstitialAd.show(RechargeDetailsActivity.this);
+                        mInterstitialAd = interstitialAd;
+                        mInterstitialAd.setFullScreenContentCallback(interstitialFullscreenCallback);
                     }
                 }
         );
+    }
+
+    private void openPlansActivity() {
+        Intent intent = new Intent(this, RechargePlansActivity.class);
+        intent.putExtra(ARG_RECHARGE_PLANS, (Serializable) mRechargePlans);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) finish();
+        return (super.onOptionsItemSelected(item));
+    }
+
+    private void initializeBannerAd() {
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+        binding.adBannerView.loadAd(adRequest);
     }
 
     private ArrayList<RechargeDetail> getRechargeDetails() {
@@ -184,7 +155,13 @@ public class RechargeDetailsActivity extends AppCompatActivity {
         binding.spinnerSip.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                activeSipIndex = position;
+                if (position == 0) {
+                    mRechargePlans = airtelRechargePlans;
+                } else if (position == 3) {
+                    mRechargePlans = jioRechargePlans;
+                } else {
+                    mRechargePlans = null;
+                }
                 List<String> cities = new ArrayList<>(rechargeDetails.get(position).getCities());
                 citiesAdapter.clear();
                 citiesAdapter.addAll(cities);

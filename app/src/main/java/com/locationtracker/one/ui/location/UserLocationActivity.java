@@ -5,7 +5,6 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -13,10 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.locationtracker.one.R;
 import com.locationtracker.one.databinding.ActivityUserLocationBinding;
 
@@ -32,11 +28,10 @@ public class UserLocationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.user_location));
 
-        checkPermissions();
-
         binding = ActivityUserLocationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        requestLocationPermission();
         initializeBannerAd();
     }
 
@@ -46,12 +41,6 @@ public class UserLocationActivity extends AppCompatActivity {
         return (super.onOptionsItemSelected(item));
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        new Handler().postDelayed(this::initializeInterstitialAd, 3000);
-    }
-
     private void initializeBannerAd() {
         MobileAds.initialize(this, initializationStatus -> {
         });
@@ -59,30 +48,13 @@ public class UserLocationActivity extends AppCompatActivity {
         binding.adBannerView.loadAd(adRequest);
     }
 
-    private void initializeInterstitialAd() {
-        AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(
-                this,
-                getString(R.string.interstitial_ad_unit_id),
-                adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        interstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                            @Override
-                            public void onAdDismissedFullScreenContent() {
-                                checkPermissions();
-                            }
-                        });
-                        interstitialAd.show(UserLocationActivity.this);
-                    }
-                }
-        );
+    private boolean hasLocationPermission() {
+        return ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED;
     }
 
-    private void checkPermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) != PERMISSION_GRANTED) {
+    private void requestLocationPermission() {
+        if (!hasLocationPermission()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 requestPermissions(new String[]{ACCESS_FINE_LOCATION}, PERMISSION_REQUEST_CODE);
             }
         }

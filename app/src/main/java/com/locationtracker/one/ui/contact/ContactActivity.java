@@ -5,18 +5,20 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
@@ -31,7 +33,30 @@ public class ContactActivity extends AppCompatActivity implements OnContactClick
     public static final String ARG_CONTACTS = "ARG_CONTACTS";
     public static final String ARG_TITLE = "ARG_TITLE";
     private ActivityContactBinding binding;
-    private static final int PERMISSION_REQUEST_CODE = 100;
+    private InterstitialAd mInterstitialAd;
+    private AdRequest adRequest;
+    private Contact mCurrentContact;
+    private final ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(
+            new RequestPermission(), isGranted -> {
+                if (isGranted) {
+                    makeCall();
+                } else {
+                    Toast.makeText(this, getString(R.string.enable_call_permission), Toast.LENGTH_SHORT).show();
+                }
+            }
+    );
+    private final FullScreenContentCallback interstitialFullscreenCallback = new FullScreenContentCallback() {
+        @Override
+        public void onAdDismissedFullScreenContent() {
+            mInterstitialAd = null;
+            makeCall();
+        }
+
+        @Override
+        public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+            makeCall();
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +70,14 @@ public class ContactActivity extends AppCompatActivity implements OnContactClick
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(title);
 
+        adRequest = new AdRequest.Builder().build();
         initializeListView(contacts);
         initializeBannerAd();
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    public void onResume() {
+        super.onResume();
         initializeInterstitialAd();
     }
 
@@ -63,7 +89,6 @@ public class ContactActivity extends AppCompatActivity implements OnContactClick
     }
 
     private void initializeInterstitialAd() {
-        AdRequest adRequest = new AdRequest.Builder().build();
         InterstitialAd.load(
                 this,
                 getString(R.string.interstitial_ad_unit_id),
@@ -71,24 +96,16 @@ public class ContactActivity extends AppCompatActivity implements OnContactClick
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        interstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-                            @Override
-                            public void onAdDismissedFullScreenContent() {
-                                checkPermissions();
-                            }
-                        });
-                        interstitialAd.show(ContactActivity.this);
+                        mInterstitialAd = interstitialAd;
+                        mInterstitialAd.setFullScreenContentCallback(interstitialFullscreenCallback);
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        mInterstitialAd = null;
                     }
                 }
         );
-    }
-
-    private void checkPermissions() {
-        if (VERSION.SDK_INT >= VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, CALL_PHONE) != PERMISSION_GRANTED) {
-                requestPermissions(new String[]{CALL_PHONE}, PERMISSION_REQUEST_CODE);
-            }
-        }
     }
 
     private void initializeListView(ArrayList<Contact> contacts) {
@@ -104,19 +121,28 @@ public class ContactActivity extends AppCompatActivity implements OnContactClick
 
     @Override
     public void onClick(Contact contact) {
-        if (VERSION.SDK_INT >= VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, CALL_PHONE) != PERMISSION_GRANTED) {
-                Toast.makeText(this, getString(R.string.enable_call_permission), Toast.LENGTH_SHORT).show();
+        mCurrentContact = contact;
+        if (mInterstitialAd == null) {
+            if (hasPhoneCallPermission()) {
+                makeCall();
             } else {
-                makeCall(contact.getNumber());
+                requestPermissionLauncher.launch(CALL_PHONE);
             }
         } else {
-            makeCall(contact.getNumber());
+            mInterstitialAd.show(this);
         }
     }
 
-    private void makeCall(String number) {
-        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + Uri.encode(number)));
-        startActivity(intent);
+    private boolean hasPhoneCallPermission() {
+        return ActivityCompat.checkSelfPermission(this, CALL_PHONE) == PERMISSION_GRANTED;
+    }
+
+    private void makeCall() {
+        if (hasPhoneCallPermission()) {
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + Uri.encode(mCurrentContact.getNumber())));
+            startActivity(intent);
+        } else {
+            requestPermissionLauncher.launch(CALL_PHONE);
+        }
     }
 }

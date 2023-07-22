@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,7 +24,6 @@ public class RechargePlansActivity extends AppCompatActivity {
     private ActivityRechargePlansBinding binding;
     public static String ARG_RECHARGE_PLANS = "ARG_RECHARGE_PLANS";
     private ArrayList<RechargePlan> rechargePlans;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class RechargePlansActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        binding.appbar.setVisibility(View.VISIBLE);
         binding.viewpager.setOffscreenPageLimit(5);
         binding.viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.tabs));
         binding.tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

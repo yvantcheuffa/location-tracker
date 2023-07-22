@@ -6,13 +6,14 @@ import static com.locationtracker.one.ui.contact.ContactActivity.ARG_TITLE;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
@@ -30,6 +31,22 @@ import java.util.ArrayList;
 
 public class BankActivity extends AppCompatActivity implements OnBankClickListener {
     private ActivityBankBinding binding;
+    private AdRequest adRequest;
+    private InterstitialAd mInterstitialAd;
+    private Bank mBank;
+
+    private final FullScreenContentCallback interstitialFullscreenCallback = new FullScreenContentCallback() {
+        @Override
+        public void onAdDismissedFullScreenContent() {
+            mInterstitialAd = null;
+            startActivity(getActivityIntent());
+        }
+
+        @Override
+        public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+            startActivity(getActivityIntent());
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,36 +58,32 @@ public class BankActivity extends AppCompatActivity implements OnBankClickListen
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.bank_details));
 
+        adRequest = new AdRequest.Builder().build();
+
         initializeListView();
         initializeBannerAd();
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        new Handler().postDelayed(this::initializeInterstitialAd, 3000);
+    public void onResume() {
+        super.onResume();
+        initializeInterstitialAd();
     }
 
-    private void initializeBannerAd() {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
-        AdRequest adRequest = new AdRequest.Builder().build();
-        binding.adBannerView.loadAd(adRequest);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) finish();
+        return (super.onOptionsItemSelected(item));
     }
 
-    private void initializeInterstitialAd() {
-        AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(
-                this,
-                getString(R.string.interstitial_ad_unit_id),
-                adRequest,
-                new InterstitialAdLoadCallback() {
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        interstitialAd.show(BankActivity.this);
-                    }
-                }
-        );
+    @Override
+    public void onClick(Bank bank) {
+        mBank = bank;
+        if (mInterstitialAd == null) {
+            startActivity(getActivityIntent());
+        } else {
+            mInterstitialAd.show(this);
+        }
     }
 
     private void initializeListView() {
@@ -86,17 +99,31 @@ public class BankActivity extends AppCompatActivity implements OnBankClickListen
         return new Gson().fromJson(jsonContent, listType);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home) finish();
-        return (super.onOptionsItemSelected(item));
+    private void initializeBannerAd() {
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+        binding.adBannerView.loadAd(adRequest);
     }
 
-    @Override
-    public void onClick(Bank bank) {
+    private void initializeInterstitialAd() {
+        InterstitialAd.load(
+                this,
+                getString(R.string.interstitial_ad_unit_id),
+                adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        mInterstitialAd = interstitialAd;
+                        mInterstitialAd.setFullScreenContentCallback(interstitialFullscreenCallback);
+                    }
+                }
+        );
+    }
+
+    private Intent getActivityIntent() {
         Intent intent = new Intent(this, ContactActivity.class);
-        intent.putExtra(ARG_CONTACTS, (Serializable) bank.getContacts());
-        intent.putExtra(ARG_TITLE, bank.getName());
-        startActivity(intent);
+        intent.putExtra(ARG_CONTACTS, (Serializable) mBank.getContacts());
+        intent.putExtra(ARG_TITLE, mBank.getName());
+        return intent;
     }
 }
