@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.locationtracker.one'
+    namespace 'com.locationtracker.two'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.locationtracker.one"
+        applicationId "com.locationtracker.two"
         minSdk 21
         targetSdk 33
         versionCode 1

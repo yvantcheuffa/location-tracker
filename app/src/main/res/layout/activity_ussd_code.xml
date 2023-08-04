@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_secondary"
-    tools:context="com.locationtracker.one.ui.ussd.USSDCodeActivity">
+    tools:context="com.locationtracker.two.ui.ussd.USSDCodeActivity">
 
     <GridView
         android:id="@+id/ussd_grid_view"

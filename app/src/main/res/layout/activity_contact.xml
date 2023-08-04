@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_secondary"
-    tools:context="com.locationtracker.one.ui.contact.ContactActivity">
+    tools:context="com.locationtracker.two.ui.contact.ContactActivity">
 
     <ListView
         android:id="@+id/contact_list_view"
