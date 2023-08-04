@@ -3,7 +3,6 @@ package com.locationtracker.one.ui.splash;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
@@ -13,19 +12,18 @@ import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.locationtracker.one.R;
 import com.locationtracker.one.databinding.ActivityIntroBinding;
 import com.locationtracker.one.ui.home.MainActivity;
 
 
 public class IntroActivity extends AppCompatActivity {
-    private InterstitialAd mInterstitialAd;
+    private AppOpenAd mAppOpenAd;
     private final Handler mHandler = new Handler();
     private final Runnable mRunnable = () -> {
-        if (mInterstitialAd != null) {
-            mInterstitialAd.show(IntroActivity.this);
+        if (mAppOpenAd != null) {
+            mAppOpenAd.show(IntroActivity.this);
         } else {
             finish();
             startActivity(new Intent(IntroActivity.this, MainActivity.class));
@@ -43,7 +41,7 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        initializeInterstitialAd();
+        initializeOpenAd();
 
         mHandler.postDelayed(mRunnable, 4000);
     }
@@ -54,36 +52,34 @@ public class IntroActivity extends AppCompatActivity {
         mHandler.removeCallbacks(mRunnable);
     }
 
-    private void initializeInterstitialAd() {
+    private void initializeOpenAd() {
         AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(
+        AppOpenAd.load(
                 this,
-                getString(R.string.interstitial_ad_unit_id),
+                getString(R.string.open_ad_unit_id),
                 adRequest,
-                new InterstitialAdLoadCallback() {
+                new AppOpenAd.AppOpenAdLoadCallback() {
                     @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        mInterstitialAd = interstitialAd;
-                        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                    public void onAdLoaded(@NonNull AppOpenAd appOpenAd) {
+                        mAppOpenAd = appOpenAd;
+                        mAppOpenAd.setFullScreenContentCallback(new FullScreenContentCallback() {
                             @Override
                             public void onAdDismissedFullScreenContent() {
-                                mInterstitialAd = null;
+                                mAppOpenAd = null;
                                 finish();
                                 startActivity(new Intent(IntroActivity.this, MainActivity.class));
                             }
 
                             @Override
                             public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                                mInterstitialAd = null;
-                                Log.d("JJNJJSN", adError.toString());
+                                mAppOpenAd = null;
                             }
                         });
                     }
 
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        mInterstitialAd = null;
-                        Log.d("onAdFailedToLoad", loadAdError.toString());
+                        mAppOpenAd = null;
                     }
                 }
         );
