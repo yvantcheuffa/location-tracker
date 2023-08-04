@@ -151,15 +151,15 @@ public class ToolsFragment extends Fragment implements ToolAdapter.OnToolClickLi
 
     private ArrayList<Tool> getTools() {
         return new ArrayList<>(List.of(
-                new Tool(R.string.number_location, R.drawable.ic_number_location),
+                new Tool(R.string.sim_info, R.drawable.ic_sim_info),
+                new Tool(R.string.bank_info, R.drawable.ic_bank_info),
+                new Tool(R.string.ussd_codes, R.drawable.ic_ussd_codes),
+                new Tool(R.string.recharge_plans, R.drawable.ic_recharge_plans),
+                new Tool(R.string.user_location, R.drawable.ic_user_location),
                 new Tool(R.string.direction_map, R.drawable.ic_direction_map),
                 new Tool(R.string.street_view, R.drawable.ic_street_view),
                 new Tool(R.string.near_by_places, R.drawable.ic_nearby_places),
-                new Tool(R.string.user_location, R.drawable.ic_user_location),
-                new Tool(R.string.recharge_plans, R.drawable.ic_recharge_plans),
-                new Tool(R.string.sim_info, R.drawable.ic_sim_info),
-                new Tool(R.string.bank_info, R.drawable.ic_bank_info),
-                new Tool(R.string.ussd_codes, R.drawable.ic_ussd_codes)
+                new Tool(R.string.number_location, R.drawable.ic_number_location)
         ));
     }
 
