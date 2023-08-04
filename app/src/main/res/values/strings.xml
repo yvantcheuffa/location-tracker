@@ -32,7 +32,7 @@
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="open_ad_unit_id">ca-app-pub-3940256099942544/3419835294</string>
-    <string name="admob_app_id">ca-app-pub-4402175404337344~9836054738</string>
+    <string name="admob_app_id">ca-app-pub-4550029070245149~5205177607</string>
     <string name="get_plans">GET PLANS</string>
     <string name="earth">Earth</string>
     <string name="title_activity_splash">SplashActivity</string>
